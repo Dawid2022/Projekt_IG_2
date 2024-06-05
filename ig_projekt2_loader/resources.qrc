@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/IG_projekt2_Loader" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
