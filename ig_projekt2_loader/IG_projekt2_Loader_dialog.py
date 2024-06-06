@@ -23,9 +23,10 @@
 """
 
 import os
-
-from qgis.PyQt import uic
-from qgis.PyQt import QtWidgets
+from numpy import arctan2
+from qgis.PyQt import uic,QtWidgets
+from qgis.utils import iface
+from qgis.core import QgsPoint
 
 # This loads your .ui file so that PyQt can populate your plugin with the elements from Qt Designer
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
@@ -41,13 +42,46 @@ class IGprojekt2Dialog(QtWidgets.QDialog, FORM_CLASS):
         # self.<objectname>, and you can use autoconnect slots - see
         # http://qt-project.org/doc/qt-4.8/designer-using-a-ui-file.html
         # #widgets-and-dialogs-with-auto-connect
+        # self.current_layer = self.mMapLayerComboBox.currentLayer()
+        # self.selected_features = self.current_layer.selectedFeatures()
+        # self.number_of_selected_elements = len(self.selected_features)
+        
         self.setupUi(self)
         self.pushButtonOblDH.clicked.connect(self.calcuate_dh)
-        
-    def calcuate_dh(self):
+        self.pushButtonOblPOLE.clicked.connect(self.area)
+
+    def count_objects(self):
         current_layer = self.mMapLayerComboBox.currentLayer()
         selected_features = current_layer.selectedFeatures()
-        h_1 = float(selected_features[0]["wysokosc"])
-        h_2 = float(selected_features[1]["wysokosc"])
-        d_h = h_2 - h_1
-        self.label_dh_wynik.setText(f'{d_h} m')        
+        number_of_selected_elements = len(selected_features)
+        return[current_layer,selected_features,number_of_selected_elements]
+        
+    def calcuate_dh(self):
+        current_layer,selected_features,number_of_selected_elements = self.count_objects()
+        if number_of_selected_elements == 2: 
+            h_1 = float(selected_features[0]["wysokosc"])
+            h_2 = float(selected_features[1]["wysokosc"])
+            d_h = h_2 - h_1
+            self.label_dh_wynik.setText(f'{d_h:.3f} m')   
+        elif number_of_selected_elements < 2:
+            self.label_dh_wynik.setText("Wybrano zbyt mało punktów")
+            iface.messageBar().pushMessage("Wybrano zbyt mało punktów")
+        else:
+            self.label_dh_wynik.setText("Wybrano zbyt dużo punktów")
+            iface.messageBar().pushMessage("Wybrano zbyt dużo punktów")
+            # self.label_dh_wynik.setText(f"{number_of_selected_elements}")
+            
+            
+    def area(self):
+        current_layer,selected_features,number_of_selected_elements = self.count_objects()
+        points = [feature.geometry().asPoint() for feature in selected_features]
+
+        if len(points) < 3:
+            self.label_pole_wynik.setText("Wybrano zbyt mało punktów")
+            iface.messageBar().pushMessage("Wybrano zbyt mało punktów")
+        else:
+            centroid = QgsPoint(sum(point.x() for point in points) / len(points), sum(point.y() for point in points) / len(points))
+            points.sort(key=lambda point: -arctan2(point.y() - centroid.y(), point.x() - centroid.x()))
+    
+            area = 0.5 * abs(sum(points[i - 1].x() * points[i].y() - points[i].x() * points[i - 1].y() for i in range(len(points))))
+            self.label_pole_wynik.setText(f'{area:.3f} m^2')

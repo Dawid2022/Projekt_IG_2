@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>917</width>
-    <height>525</height>
+    <width>815</width>
+    <height>507</height>
    </rect>
   </property>
   <property name="font">
@@ -21,15 +21,15 @@
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>441</y>
-     <width>341</width>
-     <height>41</height>
+     <x>610</x>
+     <y>470</y>
+     <width>181</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="orientation">
@@ -42,10 +42,10 @@
   <widget class="QgsMapLayerComboBox" name="mMapLayerComboBox">
    <property name="geometry">
     <rect>
-     <x>540</x>
+     <x>320</x>
      <y>30</y>
-     <width>351</width>
-     <height>101</height>
+     <width>421</width>
+     <height>61</height>
     </rect>
    </property>
   </widget>
@@ -53,9 +53,9 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>20</y>
-     <width>301</width>
-     <height>111</height>
+     <y>30</y>
+     <width>281</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="text">
@@ -66,10 +66,15 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>150</y>
-     <width>371</width>
-     <height>121</height>
+     <y>180</y>
+     <width>301</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Oblicz różnicę wysokości</string>
@@ -79,10 +84,15 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>290</y>
-     <width>371</width>
-     <height>111</height>
+     <y>230</y>
+     <width>268</width>
+     <height>33</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Przewyższenie wynosi:</string>
@@ -91,11 +101,70 @@
   <widget class="QLabel" name="label_dh_wynik">
    <property name="geometry">
     <rect>
-     <x>390</x>
-     <y>290</y>
-     <width>301</width>
-     <height>111</height>
+     <x>330</x>
+     <y>230</y>
+     <width>471</width>
+     <height>33</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonOblPOLE">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>320</y>
+     <width>301</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Oblicz pole powierzchni</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_pole">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>370</y>
+     <width>151</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Pole wynosi:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_pole_wynik">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>370</y>
+     <width>471</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
    </property>
    <property name="text">
     <string/>
