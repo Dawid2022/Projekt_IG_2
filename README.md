@@ -27,3 +27,6 @@ Funkcja "calcuate_dh" oblicza różnicę wysokości między dwoma wybranymi punk
 Wybierz dwa punkty na mapie.
 Otwórz wtyczkę, kliknij przycisk "Oblicz różnicę wysokości".
 Wtyczka wyświetli obliczoną różnicę wysokości między dwoma punktami.
+
+Dodatwkowe uwagi:
+Użytkownik powinnen wybrać z jakiej warstwy chce korzystać przycisk znajduje się na górze okna.
