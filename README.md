@@ -8,27 +8,27 @@ Aby korzystać z IG_projekt_2, upewnij się, że masz następujące minimalne wy
 
 -System operacyjny: Windows 10
 
--Wersja QGIS: 3.34.7
+-Wersja QGIS: 3.0
 
 ### Funkcjonalności wtyczki:
 
 IG_projekt_2 oferuje następujące funkcje:
 
-#### Oblicza powierzchnię:
+#### Obliczanie powierzchni:
 
 Funkcja "area" oblicza powierzchnię wielokąta utworzonego z wybranych punktów za pomocą metody Gaussa. Aby użyć tej funkcji, wykonaj następujące kroki:
 
--Wybierz więcej niż dwa punkty na mapie.
+-Wybierz minimum trzy punkty na warstwie.
 
 -Otwórz wtyczkę, i kliknij przycisk "Oblicz pole powierzchni".
 
 -Wtyczka wyświetli obliczoną powierzchnię wielokąta w metrach kwadratowych.
 
-#### Oblicza różnicę wysokości:
+#### Obliczanie różnic wysokości:
 
 Funkcja "calcuate_dh" oblicza różnicę wysokości między dwoma wybranymi punktami. Aby użyć tej funkcji, wykonaj następujące kroki:
 
--Wybierz dwa punkty na mapie.
+-Wybierz dwa punkty na warstwie.
 
 -Otwórz wtyczkę, kliknij przycisk "Oblicz różnicę wysokości".
 
@@ -40,6 +40,8 @@ Użytkownik powinnen wybrać z jakiej warstwy chce korzystać. Przycisk znajduje
 
 ### Możliwe błędy:
 
--Jeśli użytkownik nie wybierze punktu lub wybierze zbyt mało punktów do konkretnego obliczenia, pojawi się błąd: "Wybrano zbyt mało punktów".
+-Jeśli użytkownik będzie chciał obliczyć różnicę wysokości i poda za mało punktów to wyświetli się komunikat: "Wybrano zbyt mało punktów", a w przypadku wybrania zbyt wielu punktów: "Wybrano zbyt dużo punktów",
 
--Jeśli użytkownik wybierze zbyt wiele punktów, pojawi się komunikat: "Wybrano zbyt wiele punktów".
+-Jeśli użytkownik będzie chciał obliczyć pole powierzchni  i poda za mało punktów to wyświetli się komunikat: "Wybrano zbyt mało punktów",
+
+-Jeżeli punkty pomiędzy którymi użytkownik będzie chciał obliczyć różnicę wysokości nie będą miały atrybutu 'wysokosci', wtyczka nie poda wyniku.
